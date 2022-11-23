@@ -76,8 +76,8 @@ public class JeuDataSource {
         jeux.setId(cursor.getLong(0));
         jeux.setJOUEUR1(cursor.getString(1));
         jeux.setJOUEUR2(cursor.getString(2));
-        jeux.setLANCE(cursor.getFloat(3));
-        jeux.setTEMPS(cursor.getLong(4));
+        jeux.setLANCE(cursor.getInt(3));
+        jeux.setTEMPS(cursor.getString(4));
         jeux.setDATE(cursor.getString(5));
         // Ajouter vos setters
         return jeux;
