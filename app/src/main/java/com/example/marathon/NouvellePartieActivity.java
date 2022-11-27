@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -36,7 +37,8 @@ public class NouvellePartieActivity extends AppCompatActivity {
                 startActivity(JouerActivity);
                 String Pseudo1 = premier_joueur.getText().toString();
                 String Pseudo2 = deuxieme_joueur.getText().toString();
-                datasource.createJeu(Pseudo1, Pseudo2, 0, "0", "0");
+                deuxieme_joueur.setVisibility(View.INVISIBLE);
+                datasource.createJeu(Pseudo1, Pseudo2, 42195, 42195, "0", "0");
             }
         });
     }

@@ -30,7 +30,8 @@ public class InformationsActivity extends ListActivity {
             temp.put("id",Long.toString(values.get(compteur).getId()));
             temp.put("Joueur1",values.get(compteur).getJOUEUR1());
             temp.put("Joueur2",values.get(compteur).getJOUEUR2());
-            temp.put("Score", Integer.toString(values.get(compteur).getSCORE()));
+            temp.put("Score1", Integer.toString(values.get(compteur).getDISTANCE1()));
+            temp.put("Score2", Integer.toString(values.get(compteur).getDISTANCE2()));
             temp.put("Temps", values.get(compteur).getTEMPS());
             temp.put("Date", values.get(compteur).getDATE());
             //vos variables
@@ -43,7 +44,7 @@ public class InformationsActivity extends ListActivity {
                 this,
                 list,
                 R.layout.listview_personnalisee, // Nom du fichier de votre ListView personnalisée
-                new String[] {"Joueur1", "Joueur2", "Nombre de lancé", "Temps", "Date"}, // à compléter avec vos autres variables
+                new String[] {"Joueur1", "Joueur2", "Distance", "Temps", "Date"}, // à compléter avec vos autres variables
                 new int[] {R.id.joueur1, R.id.joueur2, R.id.nbr_lance, R.id.temps, R.id.date} // à compléter avec les ID vos TextView qui afficheront les valeurs
 
         );

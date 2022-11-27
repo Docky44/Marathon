@@ -13,7 +13,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_JOUEUR1 = "joueur1";
     public static final String COLUMN_JOUEUR2 = "joueur2";
-    public static final String COLUMN_SCORE = "score";
+    public static final String COLUMN_DISTANCE1 = "distance1";
+    public static final String COLUMN_DISTANCE2 = "distance2";
     public static final String COLUMN_TEMPS = "temps";
     public static final String COLUMN_DATE = "date";
     // A vous de définir les autres colonnes...
@@ -26,7 +27,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + TABLE_NAME + "(" + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_JOUEUR1 + " text not null, "
             + COLUMN_JOUEUR2 + " text not null, "
-            + COLUMN_SCORE + " integer not null, "
+            + COLUMN_DISTANCE1 + " integer not null, "
+            + COLUMN_DISTANCE2 + " integer not null, "
             + COLUMN_DATE + " datetime not null, "
             + COLUMN_TEMPS + " time);";
 

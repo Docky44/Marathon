@@ -9,17 +9,172 @@
         android:id="@+id/pseudo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="205dp"
+        android:layout_marginStart="587dp"
         android:layout_marginBottom="587dp" />
 
     <TextView
         android:id="@+id/pseudo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="205dp"
-        android:layout_marginBottom="587dp" />
+        android:layout_marginBottom="587dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/distanceJ1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="550dp"
+        android:text=""
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/distanceJ2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="550dp"
+        android:layout_marginStart="587dp"
+        android:text=""
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+    android:id="@+id/parcour"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginBottom="480dp"
+    android:layout_marginStart="587dp"
+    android:text=""
+    android:textSize="12sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/lancer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:text="Lancer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/de_debut"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="270dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/de_debut"/>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:id="@+id/deListLayout">
+
+    <View android:layout_width="20dp"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/d1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"/>
+
+    <View android:layout_width="20dp"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/d2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"/>
+
+    <View android:layout_width="20dp"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/d3"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"/>
+    <View android:layout_width="20dp"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/d4"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center" />
+    <View
+        android:layout_width="20dp"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:id="@+id/ordreListLayout">
+
+    <View android:layout_width="20dp"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/choix1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="115dp"
+        android:text="-" />
+    <View android:layout_width="20dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/choix2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="115dp"
+        android:text="-" />
+    <View android:layout_width="20dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/choix3"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="115dp"
+        android:text="-" />
+    <View android:layout_width="20dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/choix4"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="115dp"
+        android:text="-" />
+    <View android:layout_width="20dp"
+        android:layout_height="wrap_content" />
+</LinearLayout>
 </RelativeLayout>

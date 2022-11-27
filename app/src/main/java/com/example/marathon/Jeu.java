@@ -6,7 +6,8 @@ public class Jeu {
     private long id;
     private String JOUEUR1;
     private String JOUEUR2;
-    private int SCORE;
+    private int DISTANCE1;
+    private int DISTANCE2;
     private String TEMPS;
     private String DATE;
 
@@ -34,12 +35,20 @@ public class Jeu {
         this.JOUEUR2 = JOUEUR2;
     }
 
-    public int getSCORE() {
-        return SCORE;
+    public int getDISTANCE1() {
+        return DISTANCE1;
     }
 
-    public void setSCORE(int LANCE) {
-        this.SCORE = SCORE;
+    public void setDISTANCE1(int DISTANCE1) {
+        this.DISTANCE1 = DISTANCE1;
+    }
+
+    public int getDISTANCE2() {
+        return DISTANCE2;
+    }
+
+    public void setDISTANCE2(int DISTANCE2) {
+        this.DISTANCE2 = DISTANCE2;
     }
 
     public String getTEMPS() {
