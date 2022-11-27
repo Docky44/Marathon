@@ -13,7 +13,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_JOUEUR1 = "joueur1";
     public static final String COLUMN_JOUEUR2 = "joueur2";
-    public static final String COLUMN_LANCE = "lance";
+    public static final String COLUMN_SCORE = "score";
     public static final String COLUMN_TEMPS = "temps";
     public static final String COLUMN_DATE = "date";
     // A vous de définir les autres colonnes...
@@ -23,10 +23,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     // Commande sql pour la création de la base de données
     private static final String DATABASE_CREATE = "create table "
-            + TABLE_NAME + "(" + COLUMN_ID
-            + " integer primary key autoincrement, " + COLUMN_JOUEUR1 + COLUMN_JOUEUR2 + COLUMN_LANCE + COLUMN_TEMPS + COLUMN_DATE
-            + " text not null);";// A vous de modifier la requête en ajoutant les autres colonnes
-
+            + TABLE_NAME + "(" + COLUMN_ID + " integer primary key autoincrement, "
+            + COLUMN_JOUEUR1 + " text not null, "
+            + COLUMN_JOUEUR2 + " text not null, "
+            + COLUMN_SCORE + " integer not null, "
+            + COLUMN_DATE + " datetime not null, "
+            + COLUMN_TEMPS + " time);";
 
 // C'est terminé pour cette classe, les méthodes ci-dessous sont des méthodes de base
 

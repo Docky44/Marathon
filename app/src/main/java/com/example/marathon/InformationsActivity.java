@@ -30,7 +30,7 @@ public class InformationsActivity extends ListActivity {
             temp.put("id",Long.toString(values.get(compteur).getId()));
             temp.put("Joueur1",values.get(compteur).getJOUEUR1());
             temp.put("Joueur2",values.get(compteur).getJOUEUR2());
-            temp.put("Lancé", Integer.toString(values.get(compteur).getLANCE()));
+            temp.put("Score", Integer.toString(values.get(compteur).getSCORE()));
             temp.put("Temps", values.get(compteur).getTEMPS());
             temp.put("Date", values.get(compteur).getDATE());
             //vos variables

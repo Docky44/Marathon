@@ -6,7 +6,7 @@ public class Jeu {
     private long id;
     private String JOUEUR1;
     private String JOUEUR2;
-    private int LANCE;
+    private int SCORE;
     private String TEMPS;
     private String DATE;
 
@@ -34,12 +34,12 @@ public class Jeu {
         this.JOUEUR2 = JOUEUR2;
     }
 
-    public int getLANCE() {
-        return LANCE;
+    public int getSCORE() {
+        return SCORE;
     }
 
-    public void setLANCE(int LANCE) {
-        this.LANCE = LANCE;
+    public void setSCORE(int LANCE) {
+        this.SCORE = SCORE;
     }
 
     public String getTEMPS() {
