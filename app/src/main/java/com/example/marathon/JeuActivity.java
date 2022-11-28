@@ -64,7 +64,7 @@ public class JeuActivity extends AppCompatActivity {
         pseudo1.setText("Au tour du joueur : " + joueur1);
         distanceJ1.setText("La distance qu'il te reste à parcourir est de : " + distanceJoueur1);
         distanceJ2.setText("La distance qu'il te reste à parcourir est de : " + distanceJoueur2);
-
+        parcour.setText("");
         choix1.setVisibility(View.INVISIBLE);
         choix2.setVisibility(View.INVISIBLE);
         choix3.setVisibility(View.INVISIBLE);
@@ -90,13 +90,18 @@ public class JeuActivity extends AppCompatActivity {
                     distanceJ1.setVisibility(View.VISIBLE);
                     pseudo2.setVisibility(View.INVISIBLE);
                     distanceJ2.setVisibility(View.INVISIBLE);
-                    parcour.setText(String.format("%s tu a parcouru %s metre", pseudo1, parcour));
-                    distanceJ1.setText(String.format("La distance qu'il te reste à parcourir est de : %s", (distanceJoueur1 - Integer.toString(parcour))));
+                    distanceJ1.getText().toString();
+                    parcour.getText().toString();
+                    parcour.setText(String.format("%s tu a parcouru ", joueur1, "metres"  ));
+                    distanceJ1.setText(distanceJoueur1 - Integer.parseInt(parcour.getText().toString()));
                 } else {
                     pseudo1.setVisibility(View.INVISIBLE);
                     distanceJ1.setVisibility(View.INVISIBLE);
                     pseudo2.setVisibility(View.VISIBLE);
                     distanceJ2.setVisibility(View.VISIBLE);
+                    parcour.getText().toString();
+                    parcour.setText(String.format("%s tu a parcouru ", joueur2, "metres"  ));
+                    distanceJ2.setText(distanceJoueur2 - Integer.parseInt(parcour.getText().toString()));
                 }
                 pseudo2.setText("Au tour du joueur : " + joueur2);
 
