@@ -29,7 +29,7 @@ public class JeuActivity extends AppCompatActivity {
     private Button choix2;
     private Button choix3;
     private Button choix4;
-    private TextView parcour;
+    private TextView parcourTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class JeuActivity extends AppCompatActivity {
         choix2 = (Button) findViewById(R.id.choix2);
         choix3 = (Button) findViewById(R.id.choix3);
         choix4 = (Button) findViewById(R.id.choix4);
-        parcour = (TextView) findViewById(R.id.parcour);
+        parcourTextView = (TextView) findViewById(R.id.parcourTextView);
 
 
         datasource = new JeuDataSource(this);
@@ -61,10 +61,11 @@ public class JeuActivity extends AppCompatActivity {
         String joueur2 = derniere_partie.getJOUEUR2();
         int distanceJoueur1 = derniere_partie.getDISTANCE1();
         int distanceJoueur2 = derniere_partie.getDISTANCE2();
+        int valeurParcour = 42195 ;
         pseudo1.setText("Au tour du joueur : " + joueur1);
         distanceJ1.setText("La distance qu'il te reste à parcourir est de : " + distanceJoueur1);
         distanceJ2.setText("La distance qu'il te reste à parcourir est de : " + distanceJoueur2);
-        parcour.setText("");
+        parcourTextView.setText("");
         choix1.setVisibility(View.INVISIBLE);
         choix2.setVisibility(View.INVISIBLE);
         choix3.setVisibility(View.INVISIBLE);
@@ -83,7 +84,7 @@ public class JeuActivity extends AppCompatActivity {
                 choix2.setVisibility(View.VISIBLE);
                 choix3.setVisibility(View.VISIBLE);
                 choix4.setVisibility(View.VISIBLE);
-                parcour.setVisibility(View.INVISIBLE);
+                parcourTextView.setVisibility(View.INVISIBLE);
 
                 if (distanceJoueur1 >= distanceJoueur2) {
                     pseudo1.setVisibility(View.VISIBLE);
@@ -91,17 +92,21 @@ public class JeuActivity extends AppCompatActivity {
                     pseudo2.setVisibility(View.INVISIBLE);
                     distanceJ2.setVisibility(View.INVISIBLE);
                     distanceJ1.getText().toString();
-                    parcour.getText().toString();
-                    parcour.setText(String.format("%s tu a parcouru ", joueur1, "metres"  ));
-                    distanceJ1.setText(distanceJoueur1 - Integer.parseInt(parcour.getText().toString()));
+                    parcourTextView.getText().toString();
+                    parcourTextView.setText(String.format("%s tu a parcouru ", joueur1, "metres"  ));
+                    //int distance1 = distanceJ1;
+                    //int distanceparcouru = Integer.parseInt(parcourTextView.getText().toString());
+                    //distanceJ1.setText(distance1 - distanceparcouru);
                 } else {
                     pseudo1.setVisibility(View.INVISIBLE);
                     distanceJ1.setVisibility(View.INVISIBLE);
                     pseudo2.setVisibility(View.VISIBLE);
                     distanceJ2.setVisibility(View.VISIBLE);
-                    parcour.getText().toString();
-                    parcour.setText(String.format("%s tu a parcouru ", joueur2, "metres"  ));
-                    distanceJ2.setText(distanceJoueur2 - Integer.parseInt(parcour.getText().toString()));
+                    parcourTextView.getText().toString();
+                    parcourTextView.setText(String.format("%s tu a parcouru ", joueur2, "metres"  ));
+
+                    distanceJ2.setText(distanceJoueur2 - Integer.parseInt(parcourTextView.getText().toString()));
+
                 }
                 pseudo2.setText("Au tour du joueur : " + joueur2);
 
@@ -227,36 +232,40 @@ public class JeuActivity extends AppCompatActivity {
                 choix1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        parcour.setVisibility(View.VISIBLE);
-                        String distanceparc = parcour.getText().toString();
-                        parcour.setText(distanceparc + dAleatoire1);
+                        parcourTextView.setVisibility(View.VISIBLE);
+                        String distanceparc = parcourTextView.getText().toString();
+                        String valeurParcour = distanceparc + dAleatoire1;
+                        parcourTextView.setText(valeurParcour);
                         choix1.setVisibility(View.INVISIBLE);
                     }
                 });
                 choix2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        parcour.setVisibility(View.VISIBLE);
-                        String distanceparc = parcour.getText().toString();
-                        parcour.setText(distanceparc + dAleatoire2);
+                        parcourTextView.setVisibility(View.VISIBLE);
+                        String distanceparc = parcourTextView.getText().toString();
+                        String valeurParcour = distanceparc + dAleatoire2;
+                        parcourTextView.setText(valeurParcour);
                         choix2.setVisibility(View.INVISIBLE);
                     }
                 });
                 choix3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        parcour.setVisibility(View.VISIBLE);
-                        String distanceparc = parcour.getText().toString();
-                        parcour.setText(distanceparc + dAleatoire3);
+                        parcourTextView.setVisibility(View.VISIBLE);
+                        String distanceparc = parcourTextView.getText().toString();
+                        String valeurParcour = distanceparc + dAleatoire3;
+                        parcourTextView.setText(valeurParcour);
                         choix3.setVisibility(View.INVISIBLE);
                     }
                 });
                 choix4.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        parcour.setVisibility(View.VISIBLE);
-                        String distanceparc = parcour.getText().toString();
-                        parcour.setText(distanceparc + dAleatoire4);
+                        parcourTextView.setVisibility(View.VISIBLE);
+                        String distanceparc = parcourTextView.getText().toString();
+                        String valeurParcour = distanceparc + dAleatoire4;
+                        parcourTextView.setText(valeurParcour);
                         choix4.setVisibility(View.INVISIBLE);
                     }
                 });

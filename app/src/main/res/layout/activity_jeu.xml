@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-    android:id="@+id/parcour"
+    android:id="@+id/parcourTextView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
