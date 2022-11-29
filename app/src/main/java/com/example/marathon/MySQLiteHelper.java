@@ -1,4 +1,4 @@
-package com.example.marathon; // A changer par votre package
+package com.example.marathon;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -21,10 +21,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DATE = "date";
     // A vous de définir les autres colonnes...
 
-    private static final String DATABASE_NAME = "jeu.db"; // Le plus logique est de donner le même nom que votre appli
+    private static final String DATABASE_NAME = "jeu.db";
     private static final int DATABASE_VERSION = 1;
 
-    // Commande sql pour la création de la base de données
     private static final String DATABASE_CREATE = "create table "
             + TABLE_NAME + "(" + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_JOUEUR1 + " text not null, "
@@ -36,7 +35,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_DATE + " datetime not null, "
             + COLUMN_TEMPS + " time);";
 
-// C'est terminé pour cette classe, les méthodes ci-dessous sont des méthodes de base
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

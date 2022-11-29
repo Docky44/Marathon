@@ -1,4 +1,4 @@
-package com.example.marathon; // Votre package
+package com.example.marathon;
 
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ public class InformationsActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_informations); //Votre layout où est votre ListView
+        setContentView(R.layout.activity_informations);
         datasource = new JeuDataSource(this);
         datasource.open();
         List<Jeu> values = datasource.getAllJeu();
@@ -43,9 +43,9 @@ public class InformationsActivity extends ListActivity {
         SimpleAdapter adapter = new SimpleAdapter(
                 this,
                 list,
-                R.layout.listview_personnalisee, // Nom du fichier de votre ListView personnalisée
-                new String[] {"Joueur1", "Joueur2", "Distance", "Temps", "Date"}, // à compléter avec vos autres variables
-                new int[] {R.id.joueur1, R.id.joueur2, R.id.nbr_lance, R.id.temps, R.id.date} // à compléter avec les ID vos TextView qui afficheront les valeurs
+                R.layout.listview_personnalisee,
+                new String[] {"Joueur1", "Joueur2", "Distance", "Temps", "Date"},
+                new int[] {R.id.joueur1, R.id.joueur2, R.id.nbr_lance, R.id.temps, R.id.date}
 
         );
 

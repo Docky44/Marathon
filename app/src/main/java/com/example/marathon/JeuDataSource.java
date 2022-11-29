@@ -1,4 +1,4 @@
-package com.example.marathon; // A remplacer par votre package
+package com.example.marathon;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -12,7 +12,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class JeuDataSource {
 
-    // Champs de la base de données
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
     private String[] allColumns = {MySQLiteHelper.COLUMN_ID,
@@ -23,7 +22,7 @@ public class JeuDataSource {
             MySQLiteHelper.COLUMN_SCORE1,
             MySQLiteHelper.COLUMN_SCORE2,
             MySQLiteHelper.COLUMN_TEMPS,
-            MySQLiteHelper.COLUMN_DATE};//ajouter vos colonnes...
+            MySQLiteHelper.COLUMN_DATE};
 
     public JeuDataSource(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -37,7 +36,7 @@ public class JeuDataSource {
         dbHelper.close();
     }
 
-    public Jeu createJeu(String JOUEUR1, String JOUEUR2, int DISTANCE1, int DISTANCE2, int SCORE1, int SCORE2, String TEMPS, String Date) { // ajouter vos variables. Perso, j'ai utilisé des float pour les notes (décimaux)
+    public Jeu createJeu(String JOUEUR1, String JOUEUR2, int DISTANCE1, int DISTANCE2, int SCORE1, int SCORE2, String TEMPS, String Date) {
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_JOUEUR1, JOUEUR1);
         values.put(MySQLiteHelper.COLUMN_JOUEUR2, JOUEUR2);
@@ -47,7 +46,6 @@ public class JeuDataSource {
         values.put(MySQLiteHelper.COLUMN_SCORE2, SCORE2);
         values.put(MySQLiteHelper.COLUMN_TEMPS, TEMPS);
         values.put(MySQLiteHelper.COLUMN_DATE, Date);
-        // ajouter vos valeurs...
 
         long insertId = database.insert(MySQLiteHelper.TABLE_NAME, null,
                 values);
@@ -60,7 +58,7 @@ public class JeuDataSource {
         return newJeu;
     }
 
-    public void updateJeu(long id, String JOUEUR1, String JOUEUR2, int DISTANCE1, int DISTANCE2, int SCORE1, int SCORE2, String TEMPS, String Date) { // ajouter vos variables. Perso, j'ai utilisé des float pour les notes (décimaux)
+    public void updateJeu(long id, String JOUEUR1, String JOUEUR2, int DISTANCE1, int DISTANCE2, int SCORE1, int SCORE2, String TEMPS, String Date) {
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_ID, id);
         values.put(MySQLiteHelper.COLUMN_JOUEUR1, JOUEUR1);
@@ -71,7 +69,6 @@ public class JeuDataSource {
         values.put(MySQLiteHelper.COLUMN_SCORE2, SCORE2);
         values.put(MySQLiteHelper.COLUMN_TEMPS, TEMPS);
         values.put(MySQLiteHelper.COLUMN_DATE, Date);
-        // ajouter vos valeurs...
 
         database.update(MySQLiteHelper.TABLE_NAME, values, "_id = ?", new String[]{String.valueOf(id)});
     }
@@ -104,7 +101,6 @@ public class JeuDataSource {
         jeux.setSCORE2(cursor.getInt(6));
         jeux.setTEMPS(cursor.getString(7));
         jeux.setDATE(cursor.getString(8));
-        // Ajouter vos setters
         return jeux;
     }
 }

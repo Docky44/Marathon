@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         nouvelle_partie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //redirection du main
+                //redirection de l'avtivity main vers l'activity nouvelle partie pour enregistrer les pseudos
                 Intent NouvellePartieActivity = new Intent(MainActivity.this, NouvellePartieActivity.class);
                 startActivity(NouvellePartieActivity);
             }
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         meilleurs_scores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //redirection de l'activity main vers l'activity meilleursScore pour visualiser les 3 meilleurs scores
                 Intent MeilleursScoresActivity = new Intent(MainActivity.this, MeilleursScoresActivity.class);
                 startActivity(MeilleursScoresActivity);
             }

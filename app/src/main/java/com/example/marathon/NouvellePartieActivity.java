@@ -35,19 +35,24 @@ public class NouvellePartieActivity extends AppCompatActivity {
         deuxieme_joueur = (EditText) findViewById(R.id.deuxieme_joueur);
         erreurPseudo = (TextView) findViewById(R.id.erreurPseudo);
 
+        //On ouvre la BDD pour stocker les données
         datasource = new JeuDataSource(this);
         datasource.open();
 
         jouer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Récupére les valeurs des deux pseudos
                 String Pseudo1 = premier_joueur.getText().toString();
                 String Pseudo2 = deuxieme_joueur.getText().toString();
 
+                //Si on clique sur le bouton "jouer" sans avoir renseigné tous les pseudos ça nous return un erreur
                 if (Pseudo1.matches("") || Pseudo2.matches("")) {
                     erreurPseudo.setText("Il manque un pseudo");
                     erreurPseudo.setVisibility(View.VISIBLE);
 
+                //Sinon ça nous récupére la date actuelle et initialise le temps à 0
                 } else {
                     Date now = Calendar.getInstance().getTime();
                     DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -57,8 +62,10 @@ public class NouvellePartieActivity extends AppCompatActivity {
                     DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
                     String strTime = timeFormat.format(time);
 
-                    deuxieme_joueur.setVisibility(View.INVISIBLE);
+                    //Permet de créer une nouvelle partie dans la BDD
                     datasource.createJeu(Pseudo1, Pseudo2, 42195, 42195, 0,0,strTime, strDate);
+
+                    //redirection de l'activity NouvellesPartie vers l'activity Jeu pour pouvoir commencer à jouer
                     Intent JouerActivity = new Intent(NouvellePartieActivity.this, JeuActivity.class);
                     startActivity(JouerActivity);
                 }

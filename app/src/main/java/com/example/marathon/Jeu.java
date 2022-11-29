@@ -1,4 +1,4 @@
-package com.example.marathon; // A remplacer par votre package
+package com.example.marathon;
 
 import java.time.OffsetDateTime;
 
