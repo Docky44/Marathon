@@ -50,8 +50,7 @@ public class Jeu {
     }
 
     public void setDISTANCE2(int DISTANCE2) {
-        this.DISTANCE2 = DISTANCE2;
-    }
+        this.DISTANCE2 = DISTANCE2;}
 
     public int getSCORE1() {
         return SCORE1;

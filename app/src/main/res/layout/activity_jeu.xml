@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,8 +10,8 @@
         android:id="@+id/pseudo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="587dp"
         android:layout_marginBottom="587dp" />
 
@@ -18,71 +19,12 @@
         android:id="@+id/pseudo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="587dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
-
-    <TextView
-        android:id="@+id/distanceJ1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="550dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/distanceJ2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="550dp"
-        android:layout_marginStart="587dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/scoreJ1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="500dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/scoreJ2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="500dp"
-        android:layout_marginStart="587dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-    android:id="@+id/parcourTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:layout_centerHorizontal="true"
-    android:layout_marginBottom="480dp"
-    android:layout_marginStart="587dp"
-    android:text=""
-    android:textSize="12sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
         android:id="@+id/lancer"
@@ -93,7 +35,7 @@
         android:layout_marginBottom="100dp"
         android:text="Lancer"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/valider"
@@ -104,7 +46,7 @@
         android:layout_marginBottom="100dp"
         android:text="Valider"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/menu"
@@ -115,7 +57,7 @@
         android:layout_marginBottom="100dp"
         android:text="Menu"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/de_debut"
@@ -126,7 +68,7 @@
         android:layout_marginBottom="270dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/de_debut"/>
+        app:srcCompat="@drawable/de_debut" />
 
     <TextView
         android:id="@+id/win"
@@ -135,100 +77,247 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="350dp"
+        android:textAlignment="center"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/parcourListLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="210dp"
+        android:orientation="horizontal">
 
-<LinearLayout
-    android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:id="@+id/deListLayout">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <View android:layout_width="20dp"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/debutParc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tu es à : "
+            android:textSize="12sp" />
 
-    <ImageView
-        android:id="@+id/d1"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/scoreJ1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp" />
 
-    <View android:layout_width="20dp"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/scoreJ2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp" />
 
-    <ImageView
-        android:id="@+id/d2"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/finScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" coups"
+            android:textSize="12sp" />
 
-    <View android:layout_width="20dp"
-        android:layout_height="wrap_content" />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <ImageView
-        android:id="@+id/d3"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center"/>
-    <View android:layout_width="20dp"
-        android:layout_height="wrap_content" />
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/d4"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center" />
-    <View
-        android:layout_width="20dp"
-        android:layout_height="match_parent" />
+    <LinearLayout
+        android:id="@+id/distanceListLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:orientation="horizontal">
 
-</LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:id="@+id/ordreListLayout">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <View android:layout_width="20dp"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/choix1"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="115dp"
-        android:text="-" />
-    <View android:layout_width="20dp"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/debutDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Il te reste à parcourir : "
+            android:textSize="12sp" />
 
-    <Button
-        android:id="@+id/choix2"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="115dp"
-        android:text="-" />
-    <View android:layout_width="20dp"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/distanceJ1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp" />
 
-    <Button
-        android:id="@+id/choix3"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="115dp"
-        android:text="-" />
-    <View android:layout_width="20dp"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/distanceJ2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp" />
 
-    <Button
-        android:id="@+id/choix4"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="115dp"
-        android:text="-" />
-    <View android:layout_width="20dp"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/finDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" mètres !"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/scoreListLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="270dp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/debutScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tu as parcouru : "
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/parcourTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/finParc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" mètres"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/deListLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/d1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/d2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/d3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/d4"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ordreListLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/choix1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="115dp"
+            android:text="-" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/choix2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="115dp"
+            android:text="-" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/choix3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="115dp"
+            android:text="-" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/choix4"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="115dp"
+            android:text="-" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 </RelativeLayout>

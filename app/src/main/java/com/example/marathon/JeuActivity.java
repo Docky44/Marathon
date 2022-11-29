@@ -4,11 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -35,6 +43,11 @@ public class JeuActivity extends AppCompatActivity {
     private Button menu;
     private TextView scoreJ1;
     private TextView scoreJ2;
+    private LinearLayout distanceListLayout;
+    private LinearLayout scoreListLayout;
+    private LinearLayout parcourListLayout;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +74,9 @@ public class JeuActivity extends AppCompatActivity {
         menu = (Button) findViewById(R.id.menu);
         scoreJ1 = (TextView) findViewById(R.id.scoreJ1);
         scoreJ2 = (TextView) findViewById(R.id.scoreJ2);
+        distanceListLayout = (LinearLayout) findViewById(R.id.distanceListLayout);
+        scoreListLayout = (LinearLayout) findViewById(R.id.scoreListLayout);
+        parcourListLayout = (LinearLayout) findViewById(R.id.parcourListLayout);
 
 
         datasource = new JeuDataSource(this);
@@ -73,30 +89,38 @@ public class JeuActivity extends AppCompatActivity {
         int distanceJoueur2 = derniere_partie.getDISTANCE2();
         int scoreJoueur1 = derniere_partie.getSCORE1();
         int scoreJoueur2 = derniere_partie.getSCORE2();
+        String date = derniere_partie.getDATE();
+        String tempsJeu = derniere_partie.getTEMPS();
         pseudo1.setText("Au tour du joueur : " + joueur1);
+        scoreJ1.setText(Integer.toString(scoreJoueur1) );
+        scoreJ2.setText(Integer.toString(scoreJoueur2) );
 
-        if (scoreJoueur1 >= scoreJoueur2) {
+        if (scoreJoueur1 == scoreJoueur2) {
             pseudo1.setVisibility(View.VISIBLE);
+            scoreJ2.setVisibility(View.INVISIBLE);
+            scoreJ2.setWidth(0);
             distanceJ1.setVisibility(View.VISIBLE);
             pseudo2.setVisibility(View.INVISIBLE);
             distanceJ2.setVisibility(View.INVISIBLE);
+            distanceJ2.setWidth(0);
             parcourTextView.getText().toString();
             parcourTextView.setText("");
-            scoreJ2.setText("");
-            scoreJ1.setText("");
+            scoreJ1.setText(Integer.toString(scoreJoueur1 + 1) );
 
         } else {
             pseudo1.setVisibility(View.INVISIBLE);
+            scoreJ1.setVisibility(View.INVISIBLE);
+            scoreJ1.setWidth(0);
             distanceJ1.setVisibility(View.INVISIBLE);
+            distanceJ1.setWidth(0);
             pseudo2.setVisibility(View.VISIBLE);
             distanceJ2.setVisibility(View.VISIBLE);
             parcourTextView.getText().toString();
+            scoreJ2.setText(Integer.toString(scoreJoueur2 + 1) );
         }
         pseudo2.setText("Au tour du joueur : " + joueur2);
         distanceJ1.setText(Integer.toString(distanceJoueur1));
         distanceJ2.setText(Integer.toString(distanceJoueur2));
-        scoreJ1.setText(Integer.toString(scoreJoueur1));
-        scoreJ1.setText(Integer.toString(scoreJoueur2));
         parcourTextView.setText("");
         choix1.setVisibility(View.INVISIBLE);
         choix2.setVisibility(View.INVISIBLE);
@@ -114,8 +138,26 @@ public class JeuActivity extends AppCompatActivity {
             pseudo2.setVisibility(View.INVISIBLE);
             distanceJ1.setVisibility(View.INVISIBLE);
             distanceJ2.setVisibility(View.INVISIBLE);
+            distanceListLayout.setVisibility(View.INVISIBLE);
+            scoreListLayout.setVisibility(View.INVISIBLE);
+            parcourListLayout.setVisibility(View.INVISIBLE);
             menu.setVisibility(View.VISIBLE);
-            win.setText("Bien joué " + joueur1 + " tu as gagné !");
+            scoreJ1.setVisibility(View.INVISIBLE);
+            scoreJ2.setVisibility(View.INVISIBLE);
+            Date derniereDate = Calendar.getInstance().getTime();
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            try {
+                Date date1 = dateFormat.parse(date);
+                long diffDate = date1.getTime() - derniereDate.getTime();
+                DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+                Time diffTime = new Time(diffDate);
+                String temps = timeFormat.format(diffTime);
+                derniere_partie.setTEMPS(temps);
+                win.setText("Bien joué " + joueur1 + " !" + "\n tu as gagné le " + date + " \nen " + scoreJoueur1 + " coups ! \nEn " + temps);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
 
         } else if (distanceJoueur2 <= 0) {
 
@@ -125,9 +167,25 @@ public class JeuActivity extends AppCompatActivity {
             distanceJ2.setVisibility(View.INVISIBLE);
             lancer.setVisibility(View.INVISIBLE);
             de_debut.setVisibility(View.INVISIBLE);
+            distanceListLayout.setVisibility(View.INVISIBLE);
+            scoreListLayout.setVisibility(View.INVISIBLE);
+            parcourListLayout.setVisibility(View.INVISIBLE);
             menu.setVisibility(View.VISIBLE);
-            win.setText("Bien joué " + joueur2 + " tu as gagné !");
-
+            scoreJ1.setVisibility(View.INVISIBLE);
+            scoreJ2.setVisibility(View.INVISIBLE);
+            Date derniereDate = Calendar.getInstance().getTime();
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            try {
+                Date date1 = dateFormat.parse(date);
+                long diffDate = date1.getTime() - derniereDate.getTime();
+                DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+                Time diffTime = new Time(diffDate);
+                String temps = timeFormat.format(diffTime);
+                derniere_partie.setTEMPS(temps);
+                win.setText("Bien joué " + joueur2 + " !" + "\n tu as gagné le " + date + " \nen " + scoreJoueur2 + " coups ! \nEn " + temps);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
         menu.setOnClickListener(new View.OnClickListener() {
@@ -149,51 +207,99 @@ public class JeuActivity extends AppCompatActivity {
                 de_debut.setVisibility(View.INVISIBLE);
                 parcourTextView.setVisibility(View.INVISIBLE);
                 valider.setVisibility(View.VISIBLE);
-                scoreJ1.setText(Integer.toString(scoreJoueur1 + 1) );
 
-                if (distanceJoueur1 >= 1000 || distanceJoueur2 >= 1000) {
-                    choix1.setVisibility(View.VISIBLE);
-                    choix2.setVisibility(View.VISIBLE);
-                    choix3.setVisibility(View.VISIBLE);
-                    choix4.setVisibility(View.VISIBLE);
-                    d1.setVisibility(View.VISIBLE);
-                    d2.setVisibility(View.VISIBLE);
-                    d4.setVisibility(View.VISIBLE);
-                    d3.setVisibility(View.VISIBLE);
+                if (scoreJoueur1 == scoreJoueur2){
+
+                    if (distanceJoueur1 >= 1000) {
+                        choix1.setVisibility(View.VISIBLE);
+                        choix2.setVisibility(View.VISIBLE);
+                        choix3.setVisibility(View.VISIBLE);
+                        choix4.setVisibility(View.VISIBLE);
+                        d1.setVisibility(View.VISIBLE);
+                        d2.setVisibility(View.VISIBLE);
+                        d4.setVisibility(View.VISIBLE);
+                        d3.setVisibility(View.VISIBLE);
+                    }
+
+                    if (distanceJoueur1 < 1000) {
+                        choix1.setVisibility(View.INVISIBLE);
+                        choix2.setVisibility(View.VISIBLE);
+                        choix3.setVisibility(View.VISIBLE);
+                        choix4.setVisibility(View.VISIBLE);
+                        d1.setVisibility(View.INVISIBLE);
+                        d2.setVisibility(View.VISIBLE);
+                        d4.setVisibility(View.VISIBLE);
+                        d3.setVisibility(View.VISIBLE);
+                    }
+
+                    if (distanceJoueur1 < 100) {
+                        choix4.setVisibility(View.INVISIBLE);
+                        choix1.setVisibility(View.INVISIBLE);
+                        choix2.setVisibility(View.VISIBLE);
+                        choix3.setVisibility(View.VISIBLE);
+                        d1.setVisibility(View.INVISIBLE);
+                        d4.setVisibility(View.INVISIBLE);
+                        d2.setVisibility(View.VISIBLE);
+                        d3.setVisibility(View.VISIBLE);
+                    }
+
+                    if (distanceJoueur1 < 10) {
+                        choix3.setVisibility(View.INVISIBLE);
+                        choix4.setVisibility(View.INVISIBLE);
+                        choix1.setVisibility(View.INVISIBLE);
+                        choix2.setVisibility(View.VISIBLE);
+                        d3.setVisibility(View.INVISIBLE);
+                        d1.setVisibility(View.INVISIBLE);
+                        d4.setVisibility(View.INVISIBLE);
+                        d2.setVisibility(View.VISIBLE);
+                    }
+
+                }else {
+                    if (distanceJoueur2 >= 1000) {
+                        choix1.setVisibility(View.VISIBLE);
+                        choix2.setVisibility(View.VISIBLE);
+                        choix3.setVisibility(View.VISIBLE);
+                        choix4.setVisibility(View.VISIBLE);
+                        d1.setVisibility(View.VISIBLE);
+                        d2.setVisibility(View.VISIBLE);
+                        d4.setVisibility(View.VISIBLE);
+                        d3.setVisibility(View.VISIBLE);
+                    }
+
+                    if (distanceJoueur2 < 1000) {
+                        choix1.setVisibility(View.INVISIBLE);
+                        choix2.setVisibility(View.VISIBLE);
+                        choix3.setVisibility(View.VISIBLE);
+                        choix4.setVisibility(View.VISIBLE);
+                        d1.setVisibility(View.INVISIBLE);
+                        d2.setVisibility(View.VISIBLE);
+                        d4.setVisibility(View.VISIBLE);
+                        d3.setVisibility(View.VISIBLE);
+                    }
+
+                    if (distanceJoueur2 < 100) {
+                        choix4.setVisibility(View.INVISIBLE);
+                        choix1.setVisibility(View.INVISIBLE);
+                        choix2.setVisibility(View.VISIBLE);
+                        choix3.setVisibility(View.VISIBLE);
+                        d1.setVisibility(View.INVISIBLE);
+                        d4.setVisibility(View.INVISIBLE);
+                        d2.setVisibility(View.VISIBLE);
+                        d3.setVisibility(View.VISIBLE);
+                    }
+
+                    if (distanceJoueur2 < 10) {
+                        choix3.setVisibility(View.INVISIBLE);
+                        choix4.setVisibility(View.INVISIBLE);
+                        choix1.setVisibility(View.INVISIBLE);
+                        choix2.setVisibility(View.VISIBLE);
+                        d3.setVisibility(View.INVISIBLE);
+                        d1.setVisibility(View.INVISIBLE);
+                        d4.setVisibility(View.INVISIBLE);
+                        d2.setVisibility(View.VISIBLE);
+                    }
                 }
 
-                if (distanceJoueur1 <= 1000 || distanceJoueur2 <= 1000) {
-                    choix1.setVisibility(View.INVISIBLE);
-                    choix2.setVisibility(View.VISIBLE);
-                    choix3.setVisibility(View.VISIBLE);
-                    choix4.setVisibility(View.VISIBLE);
-                    d1.setVisibility(View.INVISIBLE);
-                    d2.setVisibility(View.VISIBLE);
-                    d4.setVisibility(View.VISIBLE);
-                    d3.setVisibility(View.VISIBLE);
-                }
-
-                if (distanceJoueur1 <= 100 || distanceJoueur2 <= 100) {
-                    choix4.setVisibility(View.INVISIBLE);
-                    choix1.setVisibility(View.INVISIBLE);
-                    choix2.setVisibility(View.VISIBLE);
-                    choix3.setVisibility(View.VISIBLE);
-                    d1.setVisibility(View.INVISIBLE);
-                    d4.setVisibility(View.INVISIBLE);
-                    d2.setVisibility(View.VISIBLE);
-                    d3.setVisibility(View.VISIBLE);
-                }
-
-                if (distanceJoueur1 <= 10 || distanceJoueur2 <= 10) {
-                    choix3.setVisibility(View.INVISIBLE);
-                    choix4.setVisibility(View.INVISIBLE);
-                    choix1.setVisibility(View.INVISIBLE);
-                    choix2.setVisibility(View.VISIBLE);
-                    d3.setVisibility(View.INVISIBLE);
-                    d1.setVisibility(View.INVISIBLE);
-                    d4.setVisibility(View.INVISIBLE);
-                    d2.setVisibility(View.VISIBLE);
-                }
 
 
                 switch (dAleatoire1) {
@@ -379,7 +485,7 @@ public class JeuActivity extends AppCompatActivity {
                         lancer.setVisibility(View.VISIBLE);
                         valider.setVisibility(View.INVISIBLE);
                         datasource.open();
-                        datasource.updateJeu(derniere_partie.getId(), derniere_partie.getJOUEUR1(), derniere_partie.getJOUEUR2(), Integer.parseInt(distanceJ1.getText().toString()), Integer.parseInt(distanceJ2.getText().toString()), Integer.parseInt(scoreJ1.getText().toString()), Integer.parseInt(scoreJ2.getText().toString()), "0", "0");
+                        datasource.updateJeu(derniere_partie.getId(), derniere_partie.getJOUEUR1(), derniere_partie.getJOUEUR2(), Integer.parseInt(distanceJ1.getText().toString()), Integer.parseInt(distanceJ2.getText().toString()), Integer.parseInt(scoreJ1.getText().toString()), Integer.parseInt(scoreJ2.getText().toString()), derniere_partie.getTEMPS(), derniere_partie.getDATE());
                         datasource.close();
                         finish();
                         overridePendingTransition(0, 0);

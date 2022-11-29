@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         nouvelle_partie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //redirection du main
                 Intent NouvellePartieActivity = new Intent(MainActivity.this, NouvellePartieActivity.class);
                 startActivity(NouvellePartieActivity);
             }
