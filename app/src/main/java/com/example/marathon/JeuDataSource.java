@@ -15,7 +15,7 @@ public class JeuDataSource {
     // Champs de la base de données
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
-    private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
+    private String[] allColumns = {MySQLiteHelper.COLUMN_ID,
             MySQLiteHelper.COLUMN_JOUEUR1,
             MySQLiteHelper.COLUMN_JOUEUR2,
             MySQLiteHelper.COLUMN_DISTANCE1,
@@ -54,6 +54,20 @@ public class JeuDataSource {
         Jeu newJeu = cursorToJeu(cursor);
         cursor.close();
         return newJeu;
+    }
+
+    public void updateJeu(long id, String JOUEUR1, String JOUEUR2, int DISTANCE1, int DISTANCE2, String TEMPS, String Date) { // ajouter vos variables. Perso, j'ai utilisé des float pour les notes (décimaux)
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_ID, id);
+        values.put(MySQLiteHelper.COLUMN_JOUEUR1, JOUEUR1);
+        values.put(MySQLiteHelper.COLUMN_JOUEUR2, JOUEUR2);
+        values.put(MySQLiteHelper.COLUMN_DISTANCE1, DISTANCE1);
+        values.put(MySQLiteHelper.COLUMN_DISTANCE2, DISTANCE2);
+        values.put(MySQLiteHelper.COLUMN_TEMPS, TEMPS);
+        values.put(MySQLiteHelper.COLUMN_DATE, Date);
+        // ajouter vos valeurs...
+
+        database.update(MySQLiteHelper.TABLE_NAME, values, "_id = ?", new String[]{String.valueOf(id)});
     }
 
     public List<Jeu> getAllJeu() {

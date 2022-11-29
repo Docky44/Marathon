@@ -20,6 +20,7 @@ public class JeuActivity extends AppCompatActivity {
     private TextView distanceJ1;
     private TextView distanceJ2;
     private Button lancer;
+    private Button valider;
     private ImageView de_debut;
     private ImageView d1;
     private ImageView d2;
@@ -41,6 +42,7 @@ public class JeuActivity extends AppCompatActivity {
         distanceJ1 = (TextView) findViewById(R.id.distanceJ1);
         distanceJ2 = (TextView) findViewById(R.id.distanceJ2);
         lancer = (Button) findViewById(R.id.lancer);
+        valider = (Button) findViewById(R.id.valider);
         de_debut = (ImageView) findViewById(R.id.de_debut);
         d1 = (ImageView) findViewById(R.id.d1);
         d2 = (ImageView) findViewById(R.id.d2);
@@ -61,15 +63,59 @@ public class JeuActivity extends AppCompatActivity {
         String joueur2 = derniere_partie.getJOUEUR2();
         int distanceJoueur1 = derniere_partie.getDISTANCE1();
         int distanceJoueur2 = derniere_partie.getDISTANCE2();
-        int valeurParcour = 42195 ;
         pseudo1.setText("Au tour du joueur : " + joueur1);
-        distanceJ1.setText("La distance qu'il te reste à parcourir est de : " + distanceJoueur1);
-        distanceJ2.setText("La distance qu'il te reste à parcourir est de : " + distanceJoueur2);
+
+        if (distanceJoueur1 >= distanceJoueur2) {
+            pseudo1.setVisibility(View.VISIBLE);
+            distanceJ1.setVisibility(View.VISIBLE);
+            pseudo2.setVisibility(View.INVISIBLE);
+            distanceJ2.setVisibility(View.INVISIBLE);
+            parcourTextView.getText().toString();
+            parcourTextView.setText("");
+
+        } else {
+            pseudo1.setVisibility(View.INVISIBLE);
+            distanceJ1.setVisibility(View.INVISIBLE);
+            pseudo2.setVisibility(View.VISIBLE);
+            distanceJ2.setVisibility(View.VISIBLE);
+            parcourTextView.getText().toString();
+        }
+        pseudo2.setText("Au tour du joueur : " + joueur2);
+        distanceJ1.setText(Integer.toString(distanceJoueur1));
+        distanceJ2.setText(Integer.toString(distanceJoueur2));
         parcourTextView.setText("");
         choix1.setVisibility(View.INVISIBLE);
         choix2.setVisibility(View.INVISIBLE);
         choix3.setVisibility(View.INVISIBLE);
         choix4.setVisibility(View.INVISIBLE);
+        valider.setVisibility(View.INVISIBLE);
+        d1.setVisibility(View.VISIBLE);
+        d4.setVisibility(View.VISIBLE);
+        d3.setVisibility(View.VISIBLE);
+
+        if (distanceJoueur1 <= 1000 || distanceJoueur2 <= 1000) {
+            choix1.setVisibility(View.INVISIBLE);
+            d1.setVisibility(View.INVISIBLE);
+        }
+
+        if (distanceJoueur1 <= 100 || distanceJoueur2 <= 100) {
+            choix4.setVisibility(View.INVISIBLE);
+            d4.setVisibility(View.INVISIBLE);
+        }
+
+        if (distanceJoueur1 <= 10 || distanceJoueur2 <= 10) {
+            choix3.setVisibility(View.INVISIBLE);
+            d3.setVisibility(View.INVISIBLE);
+        }
+
+        if (distanceJoueur1 <= 0 || distanceJoueur2 <= 0) {
+
+
+
+        } else if (distanceJoueur2 <= 0) {
+
+        }
+
 
         lancer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,36 +131,9 @@ public class JeuActivity extends AppCompatActivity {
                 choix3.setVisibility(View.VISIBLE);
                 choix4.setVisibility(View.VISIBLE);
                 parcourTextView.setVisibility(View.INVISIBLE);
+                valider.setVisibility(View.VISIBLE);
 
-                if (distanceJoueur1 >= distanceJoueur2) {
-                    pseudo1.setVisibility(View.VISIBLE);
-                    distanceJ1.setVisibility(View.VISIBLE);
-                    pseudo2.setVisibility(View.INVISIBLE);
-                    distanceJ2.setVisibility(View.INVISIBLE);
-                    distanceJ1.getText().toString();
-                    parcourTextView.getText().toString();
-                    parcourTextView.setText(String.format("%s tu a parcouru ", joueur1, "metres"  ));
-                    //int distance1 = distanceJ1;
-                    //int distanceparcouru = Integer.parseInt(parcourTextView.getText().toString());
-                    //distanceJ1.setText(distance1 - distanceparcouru);
-                } else {
-                    pseudo1.setVisibility(View.INVISIBLE);
-                    distanceJ1.setVisibility(View.INVISIBLE);
-                    pseudo2.setVisibility(View.VISIBLE);
-                    distanceJ2.setVisibility(View.VISIBLE);
-                    parcourTextView.getText().toString();
-                    parcourTextView.setText(String.format("%s tu a parcouru ", joueur2, "metres"  ));
 
-                    distanceJ2.setText(distanceJoueur2 - Integer.parseInt(parcourTextView.getText().toString()));
-
-                }
-                pseudo2.setText("Au tour du joueur : " + joueur2);
-
-                if (distanceJoueur1 == 0 || distanceJoueur2 == 0){
-
-                    Intent WinActivity = new Intent(JeuActivity.this, WinActivity.class);
-                    startActivity(WinActivity);
-                }
 
                 switch (dAleatoire1) {
 
@@ -139,7 +158,8 @@ public class JeuActivity extends AppCompatActivity {
                         break;
 
                     case 6:
-                        d1.setImageResource(R.drawable.d6);break;
+                        d1.setImageResource(R.drawable.d6);
+                        break;
 
                 }
 
@@ -234,8 +254,13 @@ public class JeuActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         parcourTextView.setVisibility(View.VISIBLE);
                         String distanceparc = parcourTextView.getText().toString();
-                        String valeurParcour = distanceparc + dAleatoire1;
-                        parcourTextView.setText(valeurParcour);
+                        parcourTextView.setText(distanceparc + dAleatoire1);
+                        if (distanceJoueur1 >= distanceJoueur2) {
+                            distanceJ1.setText(Integer.toString(distanceJoueur1 - Integer.parseInt(parcourTextView.getText().toString())));
+
+                        } else {
+                            distanceJ2.setText(Integer.toString(distanceJoueur2 - Integer.parseInt(parcourTextView.getText().toString())));
+                        }
                         choix1.setVisibility(View.INVISIBLE);
                     }
                 });
@@ -244,8 +269,14 @@ public class JeuActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         parcourTextView.setVisibility(View.VISIBLE);
                         String distanceparc = parcourTextView.getText().toString();
-                        String valeurParcour = distanceparc + dAleatoire2;
-                        parcourTextView.setText(valeurParcour);
+                        parcourTextView.setText(distanceparc + dAleatoire2);
+                        if (distanceJoueur1 >= distanceJoueur2) {
+                            distanceJ1.setText(Integer.toString(distanceJoueur1 - Integer.parseInt(parcourTextView.getText().toString())));
+
+                        } else {
+                            distanceJ2.setText(Integer.toString(distanceJoueur2 - Integer.parseInt(parcourTextView.getText().toString())));
+                        }
+
                         choix2.setVisibility(View.INVISIBLE);
                     }
                 });
@@ -254,8 +285,13 @@ public class JeuActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         parcourTextView.setVisibility(View.VISIBLE);
                         String distanceparc = parcourTextView.getText().toString();
-                        String valeurParcour = distanceparc + dAleatoire3;
-                        parcourTextView.setText(valeurParcour);
+                        parcourTextView.setText(distanceparc + dAleatoire3);
+                        if (distanceJoueur1 >= distanceJoueur2) {
+                            distanceJ1.setText(Integer.toString(distanceJoueur1 - Integer.parseInt(parcourTextView.getText().toString())));
+
+                        } else {
+                            distanceJ2.setText(Integer.toString(distanceJoueur2 - Integer.parseInt(parcourTextView.getText().toString())));
+                        }
                         choix3.setVisibility(View.INVISIBLE);
                     }
                 });
@@ -264,14 +300,32 @@ public class JeuActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         parcourTextView.setVisibility(View.VISIBLE);
                         String distanceparc = parcourTextView.getText().toString();
-                        String valeurParcour = distanceparc + dAleatoire4;
-                        parcourTextView.setText(valeurParcour);
+                        parcourTextView.setText(distanceparc + dAleatoire4);
+                        if (distanceJoueur1 >= distanceJoueur2) {
+                            distanceJ1.setText(Integer.toString(distanceJoueur1 - Integer.parseInt(parcourTextView.getText().toString())));
+
+                        } else {
+                            distanceJ2.setText(Integer.toString(distanceJoueur2 - Integer.parseInt(parcourTextView.getText().toString())));
+                        }
                         choix4.setVisibility(View.INVISIBLE);
+
                     }
                 });
 
+                valider.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        lancer.setVisibility(View.VISIBLE);
+                        valider.setVisibility(View.INVISIBLE);
+                        datasource.open();
+                        datasource.updateJeu(derniere_partie.getId(), derniere_partie.getJOUEUR1(), derniere_partie.getJOUEUR2(), Integer.parseInt(distanceJ1.getText().toString()), Integer.parseInt(distanceJ2.getText().toString()), "0", "0");
+                        datasource.close();
+                        finish();
+                        overridePendingTransition(0,0);
+                        startActivity(getIntent());
+                    }
+                });
             }
         });
     }
-
 }
