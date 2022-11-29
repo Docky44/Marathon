@@ -89,26 +89,9 @@ public class JeuActivity extends AppCompatActivity {
         choix3.setVisibility(View.INVISIBLE);
         choix4.setVisibility(View.INVISIBLE);
         valider.setVisibility(View.INVISIBLE);
-        d1.setVisibility(View.VISIBLE);
-        d4.setVisibility(View.VISIBLE);
-        d3.setVisibility(View.VISIBLE);
 
-        if (distanceJoueur1 <= 1000 || distanceJoueur2 <= 1000) {
-            choix1.setVisibility(View.INVISIBLE);
-            d1.setVisibility(View.INVISIBLE);
-        }
 
-        if (distanceJoueur1 <= 100 || distanceJoueur2 <= 100) {
-            choix4.setVisibility(View.INVISIBLE);
-            d4.setVisibility(View.INVISIBLE);
-        }
-
-        if (distanceJoueur1 <= 10 || distanceJoueur2 <= 10) {
-            choix3.setVisibility(View.INVISIBLE);
-            d3.setVisibility(View.INVISIBLE);
-        }
-
-        if (distanceJoueur1 <= 0 || distanceJoueur2 <= 0) {
+        if (distanceJoueur1 <= 0 ) {
 
 
 
@@ -126,12 +109,52 @@ public class JeuActivity extends AppCompatActivity {
                 int dAleatoire3 = rand.nextInt(6 - 1 + 1) + 1;
                 int dAleatoire4 = rand.nextInt(6 - 1 + 1) + 1;
                 de_debut.setVisibility(View.INVISIBLE);
-                choix1.setVisibility(View.VISIBLE);
-                choix2.setVisibility(View.VISIBLE);
-                choix3.setVisibility(View.VISIBLE);
-                choix4.setVisibility(View.VISIBLE);
                 parcourTextView.setVisibility(View.INVISIBLE);
                 valider.setVisibility(View.VISIBLE);
+
+                if (distanceJoueur1 >= 1000 || distanceJoueur2 >= 1000) {
+                    choix1.setVisibility(View.VISIBLE);
+                    choix2.setVisibility(View.VISIBLE);
+                    choix3.setVisibility(View.VISIBLE);
+                    choix4.setVisibility(View.VISIBLE);
+                    d1.setVisibility(View.VISIBLE);
+                    d2.setVisibility(View.VISIBLE);
+                    d4.setVisibility(View.VISIBLE);
+                    d3.setVisibility(View.VISIBLE);
+                }
+
+                if (distanceJoueur1 <= 1000 || distanceJoueur2 <= 1000) {
+                    choix1.setVisibility(View.INVISIBLE);
+                    choix2.setVisibility(View.VISIBLE);
+                    choix3.setVisibility(View.VISIBLE);
+                    choix4.setVisibility(View.VISIBLE);
+                    d1.setVisibility(View.INVISIBLE);
+                    d2.setVisibility(View.VISIBLE);
+                    d4.setVisibility(View.VISIBLE);
+                    d3.setVisibility(View.VISIBLE);
+                }
+
+                if (distanceJoueur1 <= 100 || distanceJoueur2 <= 100) {
+                    choix4.setVisibility(View.INVISIBLE);
+                    choix1.setVisibility(View.INVISIBLE);
+                    choix2.setVisibility(View.VISIBLE);
+                    choix3.setVisibility(View.VISIBLE);
+                    d1.setVisibility(View.INVISIBLE);
+                    d4.setVisibility(View.INVISIBLE);
+                    d2.setVisibility(View.VISIBLE);
+                    d3.setVisibility(View.VISIBLE);
+                }
+
+                if (distanceJoueur1 <= 10 || distanceJoueur2 <= 10) {
+                    choix3.setVisibility(View.INVISIBLE);
+                    choix4.setVisibility(View.INVISIBLE);
+                    choix1.setVisibility(View.INVISIBLE);
+                    choix2.setVisibility(View.VISIBLE);
+                    d3.setVisibility(View.INVISIBLE);
+                    d1.setVisibility(View.INVISIBLE);
+                    d4.setVisibility(View.INVISIBLE);
+                    d2.setVisibility(View.VISIBLE);
+                }
 
 
 
