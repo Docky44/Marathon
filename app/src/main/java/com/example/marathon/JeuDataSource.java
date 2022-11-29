@@ -20,6 +20,8 @@ public class JeuDataSource {
             MySQLiteHelper.COLUMN_JOUEUR2,
             MySQLiteHelper.COLUMN_DISTANCE1,
             MySQLiteHelper.COLUMN_DISTANCE2,
+            MySQLiteHelper.COLUMN_SCORE1,
+            MySQLiteHelper.COLUMN_SCORE2,
             MySQLiteHelper.COLUMN_TEMPS,
             MySQLiteHelper.COLUMN_DATE};//ajouter vos colonnes...
 
@@ -35,12 +37,14 @@ public class JeuDataSource {
         dbHelper.close();
     }
 
-    public Jeu createJeu(String JOUEUR1, String JOUEUR2, int DISTANCE1, int DISTANCE2, String TEMPS, String Date) { // ajouter vos variables. Perso, j'ai utilisé des float pour les notes (décimaux)
+    public Jeu createJeu(String JOUEUR1, String JOUEUR2, int DISTANCE1, int DISTANCE2, int SCORE1, int SCORE2, String TEMPS, String Date) { // ajouter vos variables. Perso, j'ai utilisé des float pour les notes (décimaux)
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_JOUEUR1, JOUEUR1);
         values.put(MySQLiteHelper.COLUMN_JOUEUR2, JOUEUR2);
         values.put(MySQLiteHelper.COLUMN_DISTANCE1, DISTANCE1);
         values.put(MySQLiteHelper.COLUMN_DISTANCE2, DISTANCE2);
+        values.put(MySQLiteHelper.COLUMN_SCORE1, SCORE1);
+        values.put(MySQLiteHelper.COLUMN_SCORE2, SCORE2);
         values.put(MySQLiteHelper.COLUMN_TEMPS, TEMPS);
         values.put(MySQLiteHelper.COLUMN_DATE, Date);
         // ajouter vos valeurs...
@@ -56,13 +60,15 @@ public class JeuDataSource {
         return newJeu;
     }
 
-    public void updateJeu(long id, String JOUEUR1, String JOUEUR2, int DISTANCE1, int DISTANCE2, String TEMPS, String Date) { // ajouter vos variables. Perso, j'ai utilisé des float pour les notes (décimaux)
+    public void updateJeu(long id, String JOUEUR1, String JOUEUR2, int DISTANCE1, int DISTANCE2, int SCORE1, int SCORE2, String TEMPS, String Date) { // ajouter vos variables. Perso, j'ai utilisé des float pour les notes (décimaux)
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_ID, id);
         values.put(MySQLiteHelper.COLUMN_JOUEUR1, JOUEUR1);
         values.put(MySQLiteHelper.COLUMN_JOUEUR2, JOUEUR2);
         values.put(MySQLiteHelper.COLUMN_DISTANCE1, DISTANCE1);
         values.put(MySQLiteHelper.COLUMN_DISTANCE2, DISTANCE2);
+        values.put(MySQLiteHelper.COLUMN_SCORE1, SCORE1);
+        values.put(MySQLiteHelper.COLUMN_SCORE2, SCORE2);
         values.put(MySQLiteHelper.COLUMN_TEMPS, TEMPS);
         values.put(MySQLiteHelper.COLUMN_DATE, Date);
         // ajouter vos valeurs...
@@ -94,8 +100,10 @@ public class JeuDataSource {
         jeux.setJOUEUR2(cursor.getString(2));
         jeux.setDISTANCE1(cursor.getInt(3));
         jeux.setDISTANCE2(cursor.getInt(4));
-        jeux.setTEMPS(cursor.getString(5));
-        jeux.setDATE(cursor.getString(6));
+        jeux.setSCORE1(cursor.getInt(5));
+        jeux.setSCORE2(cursor.getInt(6));
+        jeux.setTEMPS(cursor.getString(7));
+        jeux.setDATE(cursor.getString(8));
         // Ajouter vos setters
         return jeux;
     }

@@ -38,7 +38,7 @@ public class NouvellePartieActivity extends AppCompatActivity {
                 String Pseudo1 = premier_joueur.getText().toString();
                 String Pseudo2 = deuxieme_joueur.getText().toString();
                 deuxieme_joueur.setVisibility(View.INVISIBLE);
-                datasource.createJeu(Pseudo1, Pseudo2, 42195, 42195, "0", "0");
+                datasource.createJeu(Pseudo1, Pseudo2, 42195, 42195, 0,0,"0", "0");
             }
         });
     }

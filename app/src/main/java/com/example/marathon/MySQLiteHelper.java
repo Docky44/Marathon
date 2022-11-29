@@ -15,6 +15,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_JOUEUR2 = "joueur2";
     public static final String COLUMN_DISTANCE1 = "distance1";
     public static final String COLUMN_DISTANCE2 = "distance2";
+    public static final String COLUMN_SCORE1 = "score1";
+    public static final String COLUMN_SCORE2 = "score2";
     public static final String COLUMN_TEMPS = "temps";
     public static final String COLUMN_DATE = "date";
     // A vous de définir les autres colonnes...
@@ -29,6 +31,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_JOUEUR2 + " text not null, "
             + COLUMN_DISTANCE1 + " integer not null, "
             + COLUMN_DISTANCE2 + " integer not null, "
+            + COLUMN_SCORE1 + " integer not null, "
+            + COLUMN_SCORE2 + " integer not null, "
             + COLUMN_DATE + " datetime not null, "
             + COLUMN_TEMPS + " time);";
 
